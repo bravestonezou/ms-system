@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.stone.ms.mapper.MerchantMapper" >
+    <resultMap id="BaseResultMap" type="Merchant" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="merchantname" property="merchantname" jdbcType="VARCHAR" />
+        <result column="merchantshopname" property="merchantshopname" jdbcType="VARCHAR" />
+        <result column="merchantaccount" property="merchantaccount" jdbcType="VARCHAR" />
+        <result column="merchantpassword" property="merchantpassword" jdbcType="VARCHAR" />
+        <result column="merchantscope" property="merchantscope" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select id,merchantname,merchantshopname,merchantaccount,merchantpassword,merchantscope from msmerchant where id = #{id,jdbcType=INTEGER}
+    </select>
+    <insert id="insert" parameterType="Merchant" >
+        insert into msmerchant (id,merchantname,merchantshopname,merchantaccount,merchantpassword,merchantscope) values (#{id},#{merchantname},#{merchantshopname},#{merchantaccount},#{merchantpassword},#{merchantscope})
+    </insert>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE FROM msmerchant WHERE id=#{id,jdbcType=INTEGER}
+    </delete>
+    <select id="findAll" resultMap="BaseResultMap">
+        select id,merchantname,merchantshopname,merchantaccount,merchantpassword,merchantscope from msmerchant
+    </select>
+    <update id="update" parameterType="Merchant">
+        UPDATE msmerchant SET id=#{id},merchantname=#{merchantname},merchantshopname=#{merchantshopname},merchantaccount=#{merchantaccount},merchantpassword=#{merchantpassword},merchantscope=#{merchantscope} WHERE id=#{id}
+    </update>
+</mapper>
