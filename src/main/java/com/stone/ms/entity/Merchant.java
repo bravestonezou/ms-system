@@ -22,26 +22,26 @@ public class Merchant {
     /**
      * 商家姓名
      */
-    @ApiModelProperty(value = "商家姓名",dataType = "int")
+    @ApiModelProperty(value = "商家姓名",dataType = "string")
     private String merchantname;
     /**
      * 商家店铺名称
      */
-    @ApiModelProperty(value = "商家店铺名称",dataType = "int")
+    @ApiModelProperty(value = "商家店铺名称",dataType = "string")
     private String merchantshopname;
     /**
      * 商家账号
      */
-    @ApiModelProperty(value = "商家账号",dataType = "int")
+    @ApiModelProperty(value = "商家账号",dataType = "string")
     private String merchantaccount;
     /**
      * 商家密码
      */
-    @ApiModelProperty(value = "商家密码",dataType = "int")
+    @ApiModelProperty(value = "商家密码",dataType = "string")
     private String merchantpassword;
     /**
      * 商家经营范围
      */
-    @ApiModelProperty(value = "商家经营范围",dataType = "int")
+    @ApiModelProperty(value = "商家经营范围",dataType = "string")
     private String merchantscope;
 }

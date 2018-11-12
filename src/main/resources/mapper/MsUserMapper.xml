@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.stone.ms.mapper.MsUserMapper" >
+    <resultMap id="BaseResultMap" type="MsUser" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="useraccount" property="useraccount" jdbcType="VARCHAR" />
+        <result column="userpassword" property="userpassword" jdbcType="VARCHAR" />
+        <result column="usersex" property="usersex" jdbcType="INTEGER" />
+        <result column="userage" property="userage" jdbcType="INTEGER" />
+        <result column="useraddress" property="useraddress" jdbcType="VARCHAR" />
+        <result column="useremail" property="useremail" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select id,username,useraccount,userpassword,usersex,userage,useraddress,useremail from msuser where id = #{id,jdbcType=INTEGER}
+    </select>
+    <insert id="insert" parameterType="MsUser" >
+        insert into msuser (id,username,useraccount,userpassword,usersex,userage,useraddress,useremail) values (#{id},#{username},#{useraccount},#{userpassword},#{usersex},#{userage},#{useraddress},#{useremail})
+    </insert>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE FROM msuser WHERE id=#{id,jdbcType=INTEGER}
+    </delete>
+    <select id="findAll" resultMap="BaseResultMap">
+        select id,username,useraccount,userpassword,usersex,userage,useraddress,useremail from msuser
+    </select>
+    <update id="update" parameterType="MsUser">
+        UPDATE msuser SET id=#{id},username=#{username},useraccount=#{useraccount},userpassword=#{userpassword},usersex=#{usersex},userage=#{userage},useraddress=#{useraddress},useremail=#{useremail} WHERE id=#{id}
+    </update>
+</mapper>
