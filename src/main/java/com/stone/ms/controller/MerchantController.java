@@ -48,10 +48,11 @@ public class MerchantController {
      */
     @ApiOperation(value="添加商家", notes="根据merchant对象添加商家")
     @ApiImplicitParam(name = "merchant", value = "商家实体", required = true, dataType = "Merchant")
-    @RequestMapping(value = "add", method = RequestMethod.GET)
-    public void add(Merchant merchant){
+    @RequestMapping(value = "add", method = RequestMethod.POST)
+    public String add(Merchant merchant){
         merchantService.insert(merchant);
         log.info("新增成功："+merchant);
+        return "redirect:querybyvo";
     }
 
     /**
@@ -77,10 +78,11 @@ public class MerchantController {
     @ApiImplicitParams({
            @ApiImplicitParam(name = "merchant", value = "商家实体merchant", required = true, dataType = "Merchant")
     })
-    @RequestMapping(value = "update", method = RequestMethod.GET)
-    public void update(Merchant merchant){
+    @RequestMapping(value = "update", method = RequestMethod.POST)
+    public String update(Merchant merchant){
         merchantService.update(merchant);
         log.info("商家信息更新成功："+merchant);
+        return "redirect:querybyvo";
     }
 
     /**
@@ -90,9 +92,10 @@ public class MerchantController {
     @ApiOperation(value="删除商家信息", notes="根据id删除商家信息")
     @ApiImplicitParam(name = "id", value = "商家ID", required = true, dataType = "Long", paramType = "path")
     @RequestMapping(value = "del", method = RequestMethod.GET)
-    public void del(int id){
+    public String del(int id){
         merchantService.deleteById(id);
         log.info("商家删除成功");
+        return "redirect:querybyvo";
     }
 
     /**

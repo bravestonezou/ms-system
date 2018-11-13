@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="update">
+<form action="update" method="post">
 	<input name="id" value="${msmerchant.id }" type="hidden"/>
 	商家的姓名:<input name="merchantname" value="${msmerchant.merchantname }"></br>
 	商家的店铺名称:<input name="merchantshopname" value="${msmerchant.merchantshopname }"></br>

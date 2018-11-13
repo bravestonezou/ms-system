@@ -49,10 +49,10 @@ public class MsUserController {
     @ApiOperation(value="添加用户", notes="添加用户")
     @ApiImplicitParam(name = "msUser", value = "用户实体", required = true, dataType = "MsUser")
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public void add(HttpServletRequest request,MsUser msUser){
+    public String add(MsUser msUser){
         msUserService.insert(msUser);
         log.info("新增成功："+msUser);
-        querybyvo(request);
+        return "redirect:querybyvo";
     }
 
     /**
@@ -79,10 +79,10 @@ public class MsUserController {
             @ApiImplicitParam(name = "msUser", value = "用户实体", required = true, dataType = "MsUser")
     })
     @RequestMapping(value = "update", method = RequestMethod.POST)
-    public void update(HttpServletRequest request,MsUser msUser){
+    public String update(MsUser msUser){
         msUserService.update(msUser);
         log.info("用户信息更新成功："+msUser);
-        querybyvo(request);
+        return "redirect:querybyvo";
     }
 
     /**
@@ -92,10 +92,10 @@ public class MsUserController {
     @ApiOperation(value="删除用户信息", notes="根据id删除用户信息")
     @ApiImplicitParam(name = "id", value = "商家ID", required = true, dataType = "Long", paramType = "path")
     @RequestMapping(value = "del", method = RequestMethod.GET)
-    public void del(HttpServletRequest request,int id){
+    public String del(int id){
         msUserService.deleteById(id);
         log.info("用户删除成功");
-        querybyvo(request);
+        return "redirect:querybyvo";
     }
 
     /**
